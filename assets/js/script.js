@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (event) {
         event.preventDefault(); // Prevent form submission
 
-        const urlPattern = /^https:\/\/www\.threads\.net\/@[a-zA-Z0-9_]+\/post\/[a-zA-Z0-9_]+$/;
+        const urlPattern = /^https:\/\/www\.threads\.net\/@[a-zA-Z0-9_]+\/post\/[a-zA-Z0-9_]+(\/\?.*)?$/;
 
         if (
             threadsUrlInput.value.trim() === "" ||
