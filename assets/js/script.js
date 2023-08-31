@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const footer = document.getElementById("footer");
     const threadsUrlInput = document.getElementById("threads-url");
     const loadingSign = document.getElementById("loadingSign");
+    const container = document.getElementById("container");
+    var h1Element = document.getElementsByTagName("h1")[0];
 
     form.addEventListener("submit", function (event) {
         event.preventDefault(); // Prevent form submission
@@ -45,8 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     resultBox.innerHTML = data;
 
                     // Adjust the form's position after data is loaded
+                    h1Element.style.top = "20px";
                     form.style.marginTop = "10px";
-                    footer.style.top = "70px";
+                    container.style.top = "20px";
+                    footer.style.top = "50px";
                 })
                 .catch(error => {
                     console.error("Error:", error);

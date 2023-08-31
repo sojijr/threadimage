@@ -19,7 +19,7 @@
 
     <h1>Threadimage</h1>
 
-    <div class="container">
+    <div class="container" id="container">
         <form method="POST" id="form">
             <div class="input-container">
                 <input type="text" id="threads-url" name="threads-url" placeholder="Threads Post URL/Link">
@@ -35,10 +35,10 @@
 
     <div class="result-box" id="resultBox">
         <div class="centered-text">
-            <p>This is the centered text.</p>
+            <p></p>
         </div>
         <div class="bottom-left-text">
-            <p>This is the bottom left text.</p>
+            <p></p>
         </div>
     </div>
 
@@ -49,7 +49,9 @@
         </p>
     </footer>
 
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/download.js"></script>
 </body>
 
 </html>

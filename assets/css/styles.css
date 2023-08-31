@@ -13,12 +13,14 @@ body {
 }
 
 h1 {
+    position: relative;
     color: #333;
     margin-bottom: 10px; /* Add margin to separate from the form */
     font-size: 44px;
 }
 
 .container {
+    position: relative;
     text-align: center;
     background-color: #333;
     border: 1px solid #ccc;
@@ -69,11 +71,11 @@ button[type="submit"] {
 
 .result-box {
     width: 300px;
-    height: 200px;
-    margin-top: 30px;
+    height: 300px;
+    margin-top: 40px;
     background-color: white;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 20px;
     position: relative;
     display: none;
@@ -86,7 +88,7 @@ button[type="submit"] {
 .bottom-left-text {
     position: absolute;
     bottom: 1px;
-    left: 66%;
+    left: 7%;
 }
 
 .centered-text p, .bottom-left-text p {
@@ -164,6 +166,10 @@ footer a {
 
     .container {
         width: 80%;
+    }
+
+    footer{
+        top: 210px;
     }
 }
 
