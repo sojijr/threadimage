@@ -85,8 +85,8 @@ button[type="submit"] {
 
 .bottom-left-text {
     position: absolute;
-    bottom: 1px;
-    left: 7%;
+    bottom: -10px;
+    left: 6%;
 }
 
 .centered-text p, .bottom-left-text p {

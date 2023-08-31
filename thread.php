@@ -83,8 +83,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!empty($imageLinks)) {
             // Remove trailing double quote from $imageLinks[0]
             $imageLinks[0] = rtrim($imageLinks[0], '"');
-            echo "<img src='$imageLinks[0]'>";
+            $imageLinks[0] = html_entity_decode($imageLinks[0]);
+
+            // Proxy the image through your server
+            $imageContents = file_get_contents($imageLinks[0]);
+            $imageDataUrl = 'data:image/jpeg;base64,' . base64_encode($imageContents);
+            
+            echo "<img width='50%' height='auto'src='$imageDataUrl'>";
         }
+        
         echo "<div class='bottom-left-text'><p>". htmlentities($username) . "</p></div>";
        
     } else {
