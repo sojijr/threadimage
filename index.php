@@ -35,7 +35,7 @@
 
     <div class="result-box" id="resultBox">
         <div class="centered-text">
-            <p></p>
+            <p id="content"></p>
         </div>
         <div class="bottom-left-text">
             <p></p>

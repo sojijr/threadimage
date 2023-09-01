@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
             form.style.marginTop = "10px";
             footer.style.top = "70px";
 
-            // Use fetch to retrieve data (replace with your actual fetching code)
+            // Use fetch to retrieve data
             fetch("././thread.php", {
                 method: "POST",
                 body: new FormData(form),
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     resultBox.style.display = "block";
                     downloadBtn.style.display = "block";
 
-                    // Set the inner HTML of resultBox with the scraped data
+                    // Set the inner HTML of resultBox with the data
                     resultBox.innerHTML = data;
 
                     // Adjust the form's position after data is loaded

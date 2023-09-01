@@ -2,7 +2,7 @@
 
 require('assets/simple_html_dom.php');
 
-// Function to make URLs clickable links
+// Function to make URLs clickable links with link previews
 function makeLinksClickable($text)
 {
     // Define a regular expression pattern to match URLs
@@ -15,10 +15,74 @@ function makeLinksClickable($text)
         if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
             $url = "http://" . $url;
         }
-        return '<a href="' . $url . '" target="_blank">' . $url . '</a>';
+
+        // Fetch Open Graph tags for link previews
+        $ogTags = getOpenGraphTags($url);
+        
+        // Build the link preview HTML
+        $linkPreview = '<a href="' . $url . '" target="_blank" class="link-preview-box">';
+        $linkPreview .= '<div class="link-preview-content">';
+        if (!empty($ogTags['og:image'])) {
+            $linkPreview .= '<img src="' . $ogTags['og:image'] . '" alt="Link Preview Image">';
+        }
+        $linkPreview .= '<div class="link-preview-info">';
+        if (!empty($ogTags['og:title'])) {
+            $linkPreview .= '<strong>' . $ogTags['og:title'] . '</strong><br>';
+        }
+        // if (!empty($ogTags['og:description'])) {
+        //     $linkPreview .= '<p>' . $ogTags['og:description'] . '</p>';
+        // }
+        $linkPreview .= '</div>'; // Close link-preview-info
+        $linkPreview .= '</div>'; // Close link-preview-content
+        $linkPreview .= '</a>'; // Close link-preview-box
+
+
+        // Create a link with the link preview
+        $link = '<a href="' . $url . '" target="_blank">' . $url . '</a>';
+        $link .= $linkPreview;
+
+        return $link;
     }, $text);
 
     return $text;
+}
+
+// Function to fetch Open Graph tags from a URL
+function getOpenGraphTags($url)
+{
+    $curl = curl_init($url);
+
+    curl_setopt_array($curl, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_USERAGENT => 'Mozilla/5.0',
+        CURLOPT_SSL_VERIFYPEER => false,
+    ]);
+
+    $html = curl_exec($curl);
+
+    if (curl_errno($curl)) {
+        echo "cURL Error #" . curl_errno($curl) . ": " . curl_error($curl);
+        exit;
+    }
+
+    curl_close($curl);
+
+    $doc = new DOMDocument();
+    @$doc->loadHTML($html);
+
+    $ogTags = array();
+
+    // Get all meta tags with property starting with 'og:'
+    $metaTags = $doc->getElementsByTagName('meta');
+    foreach ($metaTags as $tag) {
+        $property = $tag->getAttribute('property');
+        if (strpos($property, 'og:') === 0) {
+            $ogTags[$property] = $tag->getAttribute('content');
+        }
+    }
+
+    return $ogTags;
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -76,11 +140,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Decode HTML entities to display html entities correctly
         $text = htmlspecialchars_decode($text, ENT_QUOTES);
 
-        // Make URLs clickable links
+        // Make URLs clickable links with link previews
         $text = makeLinksClickable($text);
 
+        // Check if there are image links and if the content has any links
+        $hasImageLinks = !empty($imageLinks);
+        $hasContentLinks = preg_match('/<a\s*[^>]*href="([^"]*)"[^>]*>.*<\/a>/i', $text);
+
         echo "<div class='centered-text'><p>". $text . "</p></div>";
-        if (!empty($imageLinks)) {
+
+        if ($hasImageLinks && !$hasContentLinks) {
             // Remove trailing double quote from $imageLinks[0]
             $imageLinks[0] = rtrim($imageLinks[0], '"');
             $imageLinks[0] = html_entity_decode($imageLinks[0]);
@@ -89,13 +158,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $imageContents = file_get_contents($imageLinks[0]);
             $imageDataUrl = 'data:image/jpeg;base64,' . base64_encode($imageContents);
             
-            echo "<img width='50%' height='auto'src='$imageDataUrl'>";
+            echo "<img width='50%' height='auto' src='$imageDataUrl'>";
         }
         
         echo "<div class='bottom-left-text'><p>". htmlentities($username) . "</p></div>";
        
     } else {
-        echo "Text not found in the page.";
+        echo "Threads page not found  :(";
     }
 
     // Clean up the Simple HTML DOM object

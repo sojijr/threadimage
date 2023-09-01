@@ -69,7 +69,7 @@ button[type="submit"] {
 
 .result-box {
     width: 300px;
-    height: 300px;
+    max-height: 700px;
     margin-top: 40px;
     background-color: white;
     border: 1px solid #ccc;
@@ -77,6 +77,7 @@ button[type="submit"] {
     padding: 20px;
     position: relative;
     display: none;
+    font-size: 16px;
 }
 
 .centered-text {
@@ -84,13 +85,14 @@ button[type="submit"] {
 }
 
 .bottom-left-text {
-    position: absolute;
+    position: relative;
     bottom: -10px;
-    left: 6%;
+    right: 35%;
 }
 
 .centered-text p, .bottom-left-text p {
     color: #000;
+    margin: 2px;
 }
 
 .downloadBtn{
@@ -149,6 +151,42 @@ footer a {
 #loadingSign p{
     position: relative;
     top: 30px;
+}
+
+a.link-preview-box{
+    text-decoration: none;
+    color: inherit;
+    font-size: 11px;
+}
+
+.link-preview-content {
+    display: block;
+    max-width: 60%;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-bottom: 0px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+    margin-right: auto;
+    color: inherit;
+}
+
+.link-preview-content:hover {
+    background-color: #f5f5f5;
+}
+
+a.link-preview-box .link-preview-content {
+    display: flex;
+    align-items: center;
+}
+
+a.link-preview-box img {
+    max-width: 100%;
+}
+
+a.link-preview-box strong {
+    font-weight: bold;
 }
 
 @keyframes spin {
