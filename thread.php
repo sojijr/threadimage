@@ -6,7 +6,7 @@ require('assets/simple_html_dom.php');
 function makeLinksClickable($text)
 {
     // Define a regular expression pattern to match URLs
-    $pattern = '/(https?:\/\/[^\s]+)|((www\.)?[a-zA-Z0-9.-]+\.(com|net|org|edu|ng|vercel\.app)[^\s]*)/';
+    $pattern = '/(https?:\/\/[^\s]+)|((www\.)?[a-zA-Z0-9.-]+\.(com|net|org|edu|be|ng|vercel\.app)[^\s]*)/';
 
     // Replace URLs with clickable links
     $text = preg_replace_callback($pattern, function ($matches) {

@@ -87,7 +87,7 @@ button[type="submit"] {
 .bottom-left-text {
     position: relative;
     bottom: -10px;
-    right: 35%;
+    right: 30%;
 }
 
 .centered-text p, .bottom-left-text p {
@@ -96,6 +96,7 @@ button[type="submit"] {
 }
 
 .downloadBtn{
+    position: relative;
     margin-top: 15px;
     display: none;
 }
@@ -211,12 +212,17 @@ a.link-preview-box strong {
 
 /* Styles for even smaller screens (e.g., mobile phones) */
 @media (max-width: 480px) {
+    body{
+        overflow-y: auto;
+    }
+
     h1 {
         font-size: 24px;
     }
 
     .container {
         width: 90%;
+        height: 25%;
     }
 
     .github-link {
@@ -242,6 +248,14 @@ a.link-preview-box strong {
     button[type="submit"] {
         font-size: 16px;
         padding: 15px 20px;
+    }
+
+    .result-box{
+        top: 40px;
+    }
+
+    .downloadBtn{
+        top: 40px;
     }
 
     .github-icon {

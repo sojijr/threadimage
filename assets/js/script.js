@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (event) {
         event.preventDefault(); // Prevent form submission
 
-        const urlPattern = /^https:\/\/www\.threads\.net\/@[a-zA-Z0-9_]+\/post\/[a-zA-Z0-9_]+(\/\?.*)?$/;
-
+        const urlPattern = /^https:\/\/www\.threads\.net\/@[a-zA-Z0-9_.-]+\/post\/[a-zA-Z0-9_\-]+(\/\?.*)?$/;
+        
         if (
             threadsUrlInput.value.trim() === "" ||
             !urlPattern.test(threadsUrlInput.value.trim())
@@ -46,11 +46,24 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Set the inner HTML of resultBox with the data
                     resultBox.innerHTML = data;
 
+                    // Check viewport width and adjust the form's position after data is loaded
+                    if (window.innerWidth <= 480) {
+                        h1Element.style.top = "60px";
+                        form.style.marginTop = "10px";
+                        container.style.top = "60px";
+                        footer.style.top = "70px";
+                    }
+                    else{
                     // Adjust the form's position after data is loaded
-                    h1Element.style.top = "20px";
+                    h1Element.style.top = "40px";
                     form.style.marginTop = "10px";
-                    container.style.top = "20px";
-                    footer.style.top = "50px";
+                    container.style.top = "50px";
+                    resultBox.style.top = "45px";
+                    resultBox.style.marginTop = "20px";
+                    downloadBtn.style.top = "40px";
+                    footer.style.top = "80px";
+                    }
+
                 })
                 .catch(error => {
                     console.error("Error:", error);
