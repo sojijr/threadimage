@@ -49,6 +49,8 @@
             <p></p>
         </div>
         <div class="bottom-left-text">
+            <div class="profile-picture-frame">
+            </div>
             <p></p>
         </div>
     </div>
