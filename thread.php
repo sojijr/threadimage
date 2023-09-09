@@ -118,15 +118,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Extract image links using regular expressions
     $imageLinks = [];
-    $pattern = '/https?:\/\/scontent\.cdninstagram\.com\/v\/[^\s]+/i';
+    $profilePictureLink = [];
+
+    $pattern = '/https?:\/\/scontent\.cdninstagram\.com\/v\/[^?]+\?[^\'"\s]*/i';
     preg_match_all($pattern, $html, $matches);
     if (!empty($matches[0])) {
-        // Filter and keep only the first link that starts with 'https://scontent.cdninstagram.com/v/'
-        $filteredLinks = array_filter($matches[0], function ($link) {
-            return strpos($link, 'https://scontent.cdninstagram.com/v/') === 0;
-        });
-        if (!empty($filteredLinks)) {
-            $imageLinks[] = reset($filteredLinks);
+        foreach ($matches[0] as $link) {
+            if (strpos($link, '640x640') !== false) {
+                $profilePictureLink[] = $link;
+            } else {
+                $profilePictureLink[] = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
+            }
+        }
+    }
+
+    $pattern2 = '/https?:\/\/scontent\.cdninstagram\.com\/v\/[^\s]+/i';
+    preg_match_all($pattern2, $html, $matches);
+    if (!empty($matches[0])) {
+        foreach ($matches[0] as $link) {
+            if (strpos($link, '640x640') !== true) {
+                $imageLinks[] = $link;
+            }
         }
     }
 
@@ -149,19 +161,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         echo "<div class='centered-text'><p>". $text . "</p></div>";
 
-        if ($hasImageLinks && !$hasContentLinks) {
-            // Remove trailing double quote from $imageLinks[0]
-            $imageLinks[0] = rtrim($imageLinks[0], '"');
-            $imageLinks[0] = html_entity_decode($imageLinks[0]);
+        // Remove trailing double quote from $imageLinks[0]
+        $imageLinks[0] = rtrim($imageLinks[0], '"');
+        $imageLinks[0] = html_entity_decode($imageLinks[0]);
 
-            // Proxy the image through your server
-            $imageContents = file_get_contents($imageLinks[0]);
-            $imageDataUrl = 'data:image/jpeg;base64,' . base64_encode($imageContents);
-            
-            echo "<img width='50%' height='auto' src='$imageDataUrl'>";
-        }
+        $profilePictureLink[0] = rtrim($profilePictureLink[0], '"');
+        $profilePictureLink[0] = html_entity_decode($profilePictureLink[0]);
+        // $profilePictureLinks[0] = html_entity_decode($profilePictureLink[0]);
+
+        // Proxy the image through your server
+        $imageContents = file_get_contents($imageLinks[0]);
+        $imageDataUrl = 'data:image/jpeg;base64,' . base64_encode($imageContents);
+
+        $profileContents = file_get_contents($profilePictureLink[0]);
+        $profileImageUrl = 'data:image/jpeg;base64,' . base64_encode($profileContents);
         
-        echo "<div class='bottom-left-text'><p>". htmlentities($username) . "</p></div>";
+        if ($imageLinks[0] !== $profilePictureLink[0]) {
+            if ($hasImageLinks && !$hasContentLinks) {
+                echo "<img width='50%' height='auto' src='$imageDataUrl'>";
+            }
+        }
+
+        // echo $profilePictureLinks[0];
+        echo "<div class='bottom-left-text'>
+        <div class='profile-picture-frame'><img src='$profileImageUrl' alt='Profile Picture'></div>
+        <p>". htmlentities($username) . "</p>
+        </div>";
        
     } else {
         echo "Threads page not found  :(";
