@@ -58,7 +58,8 @@
     <button type="submit" name="submit" class="downloadBtn" id="downloadBtn">Download Image</button>
 
     <footer id="footer">
-        <p>&copy; 2023. All rights reserved. Created by <a href="https://twitter.com/sojiJr" target="_blank">@sojijr</a>
+        <p>&copy; 2023. All rights reserved. Developed by <a href="https://twitter.com/sojiJr"
+                target="_blank">@sojijr</a>
         </p>
     </footer>
 
