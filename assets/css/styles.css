@@ -304,7 +304,7 @@ a.link-preview-box strong {
     }
 
     form {
-        margin-top: 1px;
+        margin-top: 6px;
     }
 
     .container {
@@ -323,8 +323,8 @@ a.link-preview-box strong {
 
     input[type="text"] {
         width: 80%;
-        height: 18px;
-        margin-right: 6px;
+        height: 17px;
+        margin-right: 5px;
         margin-bottom: 2px;
     }
 
@@ -334,7 +334,7 @@ a.link-preview-box strong {
 
     button[type="submit"] {
         font-size: 16px;
-        padding: 18px 20px;
+        padding: 17px 13px;
     }
 
     .result-box{
@@ -353,5 +353,17 @@ a.link-preview-box strong {
 
     .github-text {
         font-size: 14px;
+    }
+
+    .option-arrow p {
+        font-size: 19px;
+    }
+    
+    .option-arrow i {
+        font-size: 21px;
+    }
+
+    footer {
+        font-size: 13px;
     }
 }
