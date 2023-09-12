@@ -8,6 +8,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const loadingSign = document.getElementById("loadingSign");
     const container = document.getElementById("container");
     var h1Element = document.getElementsByTagName("h1")[0];
+    const optionArrow = document.querySelector(".option-arrow");
+    const optionContent = document.querySelector(".expand-content");
+    const colorPicker = document.getElementById("colorPicker");
+
+    //option arrow dropdown
+    optionArrow.addEventListener("click", function () {
+        optionArrow.classList.toggle("active");
+        container.classList.toggle("expanded");
+        optionContent.classList.toggle("show");
+    });
+
+    //color picker
+    colorPicker.addEventListener("input", function () {
+        const selectedColor = colorPicker.value;
+        resultBox.style.backgroundColor = selectedColor;
+    });
 
     form.addEventListener("submit", function (event) {
         event.preventDefault(); // Prevent form submission
@@ -42,6 +58,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Display the result box and download button
                     resultBox.style.display = "block";
                     downloadBtn.style.display = "block";
+                    container.classList.toggle("options");
+                    optionArrow.style.display = "block";
 
                     // Set the inner HTML of resultBox with the data
                     resultBox.innerHTML = data;
@@ -49,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Check viewport width and adjust the form's position after data is loaded
                     if (window.innerWidth <= 480) {
                         h1Element.style.top = "60px";
-                        form.style.marginTop = "10px";
+                        form.style.marginTop = "1px";
                         container.style.top = "60px";
                         footer.style.top = "70px";
                     }

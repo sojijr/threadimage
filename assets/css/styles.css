@@ -25,8 +25,10 @@ h1 {
     border-radius: 10px;
     padding: 20px;
     width: 60%;
+    height: 120px;
     box-sizing: border-box;
     display: inline-block;
+    transition: height 0.3s ease;
 }
 
 p {
@@ -39,9 +41,15 @@ form {
     margin-bottom: 10px;
 }
 
+label {
+    color: #fff;
+    margin-right: 10px;
+    pointer-events: none;
+}
+
 .input-container {
     display: flex;
-    align-items: center; /* Align items vertically in the input container */
+    align-items: center;
 }
 
 input[type="text"] {
@@ -64,6 +72,15 @@ button[type="submit"] {
     padding: 20px 25px;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="color"] {
+    border: none;
+    background: none;
+    width: 40px;
+    height: 40px;
+    margin-right: 50%;
     cursor: pointer;
 }
 
@@ -142,7 +159,7 @@ button[type="submit"] {
 
 footer {
     position: relative;
-    top: 230px;
+    top: 220px;
     background-color: #333;
     color: #fff;
     text-align: center;
@@ -154,6 +171,53 @@ footer {
 footer a {
     color: #fff;
     font-size: 19px;
+}
+
+.option-arrow {
+    display: none;
+    position: relative;
+    margin-top: -10px;
+}
+
+.option-arrow p {
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.option-arrow i {
+    color: #fff;
+    font-size: 22px;
+    transition: transform 0.3s ease;
+}
+
+.option-arrow.active i {
+    transform: rotate(180deg);
+}
+
+.options{
+    height: 150px;
+}
+
+.expanded {
+    height: 200px;
+    transition: height 0.3s ease;
+}
+
+.expand-content {
+    display: none;
+    max-height: 300px;
+    margin-top: -14px;
+    transition: max-height 0.3s ease;
+}
+
+.expand-content.show {
+    display: block;
+}
+
+.expand-content p {
+    color: #fff;
+    margin: 10px 0;
 }
 
 .loading-spinner {
@@ -239,9 +303,12 @@ a.link-preview-box strong {
         font-size: 24px;
     }
 
+    form {
+        margin-top: 1px;
+    }
+
     .container {
         width: 90%;
-        height: 25%;
     }
 
     .github-link {
@@ -250,23 +317,24 @@ a.link-preview-box strong {
     }
 
     .input-container {
-        flex-direction: column;
+        display: flex;
         align-items: center;
     }
 
     input[type="text"] {
-        width: 90%;
-        margin-right: 0;
-        margin-bottom: 15px; /* Remove margin for small screens */
+        width: 80%;
+        height: 18px;
+        margin-right: 6px;
+        margin-bottom: 2px;
     }
 
     input::placeholder {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     button[type="submit"] {
         font-size: 16px;
-        padding: 15px 20px;
+        padding: 18px 20px;
     }
 
     .result-box{
