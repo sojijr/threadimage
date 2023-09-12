@@ -18,6 +18,7 @@
     <title>Threadimage: Threads to Images</title>
     <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="assets/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -37,6 +38,13 @@
                 <button type="submit" id="submitBtn">Submit</button>
             </div>
         </form>
+        <div class="option-arrow">
+            <p>Options <i class="fas fa-chevron-down"></i></p>
+        </div>
+        <div class="expand-content">
+            <label for="colorPicker">Select Color:</label>
+            <input type="color" id="colorPicker" name="colorPicker" value="#000000">
+        </div>
     </div>
 
     <div id="loadingSign" style="display: none;">
