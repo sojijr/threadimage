@@ -18,6 +18,10 @@
     <title>Threadimage: Threads to Images</title>
     <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="assets/css/styles.css" rel="stylesheet" type="text/css">
 </head>
@@ -44,6 +48,16 @@
         <div class="expand-content">
             <label for="colorPicker">Select Color:</label>
             <input type="color" id="colorPicker" name="colorPicker" value="#000000">
+            <label for="fontSelector">Select Font:</label>
+            <select id="fontSelector" name="fontSelector">
+                <option value="Poppins, sans-serif">Poppins</option>
+                <option value="Pacifico, cursive">Pacifico</option>
+                <option value="Fugaz One, sans-serif">Fugaz One</option>
+                <option value="Georgia, serif">Georgia</option>
+                <option value="Courier New, monospace">Courier New</option>
+                <option value="Dancing Script, cursive">Dancing Script</option>
+                <option value="Sansita Swashed, sans-serif">Sansita</option>
+            </select>
         </div>
     </div>
 
