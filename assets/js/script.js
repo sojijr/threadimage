@@ -25,6 +25,12 @@ document.addEventListener("DOMContentLoaded", function () {
         resultBox.style.backgroundColor = selectedColor;
     });
 
+    //font picker
+    fontSelector.addEventListener("change", function () {
+        const selectedFont = fontSelector.value;
+        resultBox.style.fontFamily = selectedFont;
+    });
+
     form.addEventListener("submit", function (event) {
         event.preventDefault(); // Prevent form submission
 
