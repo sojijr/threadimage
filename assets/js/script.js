@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("form");
-    const submitBtn = document.getElementById("submitBtn");
     const resultBox = document.getElementById("resultBox");
     const downloadBtn = document.getElementById("downloadBtn");
     const footer = document.getElementById("footer");
@@ -12,20 +11,40 @@ document.addEventListener("DOMContentLoaded", function () {
     const optionContent = document.querySelector(".expand-content");
     const colorPicker = document.getElementById("colorPicker");
 
-    //option arrow dropdown
+    // Option arrow dropdown
     optionArrow.addEventListener("click", function () {
         optionArrow.classList.toggle("active");
         container.classList.toggle("expanded");
         optionContent.classList.toggle("show");
     });
 
-    //color picker
+    // Color picker
     colorPicker.addEventListener("input", function () {
         const selectedColor = colorPicker.value;
         resultBox.style.backgroundColor = selectedColor;
-    });
 
-    //font picker
+        const brightness = getBrightness(selectedColor);
+
+        const paragraphs = resultBox.querySelectorAll("p");
+    
+        // Set font color for all <p> tags based on brightness
+        const fontColor = brightness <= 128 ? "white" : "black";
+        paragraphs.forEach(function (paragraph) {
+            paragraph.style.color = fontColor;
+        });
+    });
+    
+    // Function to calculate brightness of a color
+    function getBrightness(color) {
+        const hex = color.slice(1);
+        const r = parseInt(hex.slice(0, 2), 16);
+        const g = parseInt(hex.slice(2, 4), 16);
+        const b = parseInt(hex.slice(4, 6), 16);
+        const brightness = (r + g + b) / 3;
+        return brightness;
+    }
+    
+    // Font picker
     fontSelector.addEventListener("change", function () {
         const selectedFont = fontSelector.value;
         resultBox.style.fontFamily = selectedFont;
