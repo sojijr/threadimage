@@ -47,7 +47,7 @@
         </div>
         <div class="expand-content">
             <label for="colorPicker">Select Color:</label>
-            <input type="color" id="colorPicker" name="colorPicker" value="#000000">
+            <input type="color" id="colorPicker" name="colorPicker" value="#FFFFFF">
             <label for="fontSelector">Select Font:</label>
             <select id="fontSelector" name="fontSelector">
                 <option value="Poppins, sans-serif">Poppins</option>
