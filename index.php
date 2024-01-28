@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="threadimage, threads, sojijr, Soji Jr">
-    <meta name="description" content="Takes your thread URL and converts it to an image (threadimage)">
+    <meta name="description" content="Takes your Threads post URL and converts it to an image (threadimage)">
     <meta name="author" content="sojijr">
     <meta name="author" content="Oluwadamilola Soji-Oderinde">
     <meta name="author" content="Soji Jr">
     <meta property="og:title" content="Threadimage: Threads to Images">
-    <meta property="og:description" content="Takes your thread URL and converts it to an image (threadimage)">
+    <meta property="og:description" content="Takes your Threads post URL and converts it to an image (threadimage)">
     <meta property="og:image"
         content="https://raw.githubusercontent.com/sojijr/threadimage/master/assets/images/READMEbanner.png">
     <meta property="og:site_name" content="Threadimage">
