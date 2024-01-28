@@ -11,7 +11,8 @@
     <meta name="author" content="Soji Jr">
     <meta property="og:title" content="Threadimage: Threads to Images">
     <meta property="og:description" content="Takes your thread URL and converts it to an image (threadimage)">
-    <meta property="og:image" content="assets\images\READMEbanner.png">
+    <meta property="og:image"
+        content="https://raw.githubusercontent.com/sojijr/threadimage/master/assets/images/READMEbanner.png">
     <meta property="og:site_name" content="Threadimage">
     <meta name="twitter:creator" content="@sojiJr">
 
